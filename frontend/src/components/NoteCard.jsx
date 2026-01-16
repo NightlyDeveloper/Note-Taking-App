@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Note from '../../../backend/src/models/Note'
 import { PenSquareIcon, Trash2Icon } from 'lucide-react'
 import { formatDate } from '../lib/utils.js';
-import axios from 'axios';
+import api from '../lib/axios.js';
 const NoteCard = ({ note }) => {
   return (
     <Link to={`/note/${note._id}`} className='card bg-base-100 hover:shadow-lg transition-all duration-200 border-t-4 border-solid border-[#00FF9D]'>
@@ -17,7 +17,7 @@ const NoteCard = ({ note }) => {
             <div className="flex items-center gap-1">
                 <PenSquareIcon className='size-4' />
                 <button className='btn btn-ghost btn-xs text-error'>
-                    <Trash2Icon className='size-4' onClick={()=>{ axios.delete(`http://localhost:5001/api/notes/${note._id}`)}} />
+                    <Trash2Icon className='size-4' onClick={()=>{ api.delete(`/notes/${note._id}`)}} />
                 </button>
             </div>
         </div>
